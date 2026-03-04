@@ -44,7 +44,7 @@ public class Timer : MonoBehaviour
         UpdateText();
     }
 
-    // 🟢 Start
+    // Start
     public void StartTimer()
     {
         if (timeSeconds > 0)
