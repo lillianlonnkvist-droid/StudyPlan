@@ -8,7 +8,7 @@ public class Timer : MonoBehaviour
     private float timeSeconds = 0f;
     private bool isRunning = false;
 
-    void Update()
+    void Update()  // varje frame 
     {
         if (!isRunning) return;
 
@@ -51,7 +51,7 @@ public class Timer : MonoBehaviour
             isRunning = true;
     }
 
-    void UpdateText()
+    void UpdateText()                                    //sätter texten i formatet mm:ss
     {
         int minutes = Mathf.FloorToInt(timeSeconds / 60);
         int seconds = Mathf.FloorToInt(timeSeconds % 60);
