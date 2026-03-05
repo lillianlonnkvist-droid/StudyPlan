@@ -12,8 +12,8 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMeny.unity
     guid: a723d3643d851ad4bbbbaf5a63c0a5bc
   - enabled: 1
-    path: Assets/Scenes/Vadym.unity
-    guid: 8694854e4773b46468baa881cf0e8614
+    path: Assets/Scenes/SceneVadym.unity
+    guid: 6cfa28f8b03a2f24780c9d4ea494144b
   - enabled: 1
     path: Assets/Scenes/Settings.unity
     guid: 40a901243ea365c49831c9de14d64718
