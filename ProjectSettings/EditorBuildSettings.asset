@@ -8,15 +8,18 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/HomeScreen.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/MainMeny.unity
     guid: a723d3643d851ad4bbbbaf5a63c0a5bc
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SceneVadym.unity
     guid: 6cfa28f8b03a2f24780c9d4ea494144b
   - enabled: 1
     path: Assets/Scenes/Settings.unity
     guid: 40a901243ea365c49831c9de14d64718
+  - enabled: 1
+    path: Assets/Scenes/StudieApp.unity
+    guid: fc7ef6ee60b2a4a4e9087977431cbad2
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
