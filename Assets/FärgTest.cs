@@ -3,26 +3,33 @@ using UnityEngine.Audio;
 using UnityEngine.UI;
 using static UnityEngine.Rendering.DebugUI;
 
+
+
+
 public class FärgTest : MonoBehaviour
 {
     [SerializeField] Color lightTheme;
     [SerializeField] Color darkTheme;
 
-     [SerializeField] AudioMixer mixer;
 
-    [SerializeField] Image thingToChange;
+    [SerializeField] Image[] themedUI;
     static bool isDarkTheme = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        mixer.SetFloat("Mastersss ", 1);
         if (isDarkTheme)
         {
-            thingToChange.color = darkTheme;
+            for (int i = 0; i < themedUI.Length; i++)
+            {
+                themedUI[i].color = darkTheme;
+            }
         }
         else
         {
-            thingToChange.color = lightTheme;
+            for (int i = 0; i < themedUI.Length; i++)
+            {
+                themedUI[i].color = lightTheme;
+            }
         }
     }
 
@@ -31,11 +38,17 @@ public class FärgTest : MonoBehaviour
         if (isDarkTheme)
         {
             isDarkTheme = false;
-            thingToChange.color = lightTheme;
+            for (int i = 0; i < themedUI.Length; i++)
+            {
+                themedUI[i].color = lightTheme;
+            }
         }
         else {
             isDarkTheme = true;
-            thingToChange.color = darkTheme;
+            for (int i = 0; i < themedUI.Length; i++)
+            {
+                themedUI[i].color = darkTheme;
+            }
         }
     }
 
