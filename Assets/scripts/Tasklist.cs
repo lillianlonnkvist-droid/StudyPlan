@@ -1,20 +1,24 @@
 using UnityEngine;
 using TMPro;
 
-public class TaskList : MonoBehaviour
+public class Tasklist : MonoBehaviour
 {
-    public TMP_InputField inputField;
-    public TMP_Text tasksText;
 
-    int count = 0;
+
+    public TMP_InputField InputField;
+    public TMP_Text TaskText;
+
+    private int taskNumber = 0;
 
     public void AddTask()
     {
-        if (inputField.text.Trim() == "") return;
-
-        count++;
-        tasksText.text += count + ". " + inputField.text + "\n";
-
-        inputField.text = "";
+        string task = InputField.text;
+        if (!string.IsNullOrEmpty(task))
+        return;
+        
+        taskNumber++;
+        TaskText.text += taskNumber + ". " + task + "\n";
+        InputField.text = "";
+        InputField.ActivateInputField();
     }
 }
