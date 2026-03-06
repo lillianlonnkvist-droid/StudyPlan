@@ -17,6 +17,6 @@ public class AppManager1 : MonoBehaviour
 
     public void test()
     {
-        thingToHide.SetActive(false);
+      //  thingToHide.SetActive(false);
     }
 }
