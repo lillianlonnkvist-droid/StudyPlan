@@ -18,4 +18,11 @@ public class SceneLoader : MonoBehaviour
 
 
 
+    public void ExitGame()
+    {
+        Application.Quit();
+        Debug.Log("Game closed");
+    }
+
 }
+
