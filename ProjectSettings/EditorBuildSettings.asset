@@ -20,6 +20,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/StudieApp.unity
     guid: fc7ef6ee60b2a4a4e9087977431cbad2
+  - enabled: 1
+    path: Assets/kalender.unity
+    guid: a25225c4b7ca981419bbc68ffe42b515
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
