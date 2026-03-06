@@ -8,7 +8,14 @@ public class Timer : MonoBehaviour
     private float timeSeconds = 0f;
     private bool isRunning = false;
 
-    void Update()  // varje frame 
+    void Start()
+    {
+        // ladda sparad tid
+        timeSeconds = PlayerPrefs.GetFloat("SavedTime", 0f);
+        UpdateText();
+    }
+
+    void Update()
     {
         if (!isRunning) return;
 
@@ -26,16 +33,17 @@ public class Timer : MonoBehaviour
         }
     }
 
-    
-    public void Add10Minutes()  // + 10 min
+    public void Add10Minutes()
     {
         timeSeconds += 600f;
+        SaveTime();
         UpdateText();
     }
 
-   
-    public void Minus10Minutes()  // -10 min
+    public void Minus10Minutes()
     {
+        Debug.Log("Minus button pressed");
+
         timeSeconds -= 600f;
 
         if (timeSeconds < 0)
@@ -44,18 +52,28 @@ public class Timer : MonoBehaviour
         UpdateText();
     }
 
-    // Start
     public void StartTimer()
     {
         if (timeSeconds > 0)
             isRunning = true;
     }
 
-    void UpdateText()                                    //sätter texten i formatet mm:ss
+    void UpdateText()
     {
         int minutes = Mathf.FloorToInt(timeSeconds / 60);
         int seconds = Mathf.FloorToInt(timeSeconds % 60);
 
         timeText.text = $"{minutes:00}:{seconds:00}";
+    }
+
+    void SaveTime()
+    {
+        PlayerPrefs.SetFloat("SavedTime", timeSeconds);
+        PlayerPrefs.Save();
+    }
+
+    void OnApplicationQuit()
+    {
+        SaveTime();
     }
 }
