@@ -1,50 +1,63 @@
 ﻿using UnityEngine;
 using TMPro;
+using System;
 
 public class Timer : MonoBehaviour
 {
     public TMP_Text timeText;
 
-    private float timeSeconds = 0f;
+    private float timeSeconds;
     private bool isRunning = false;
+
+    private DateTime endTime;
 
     void Start()
     {
-        // ladda sparad tid
-        timeSeconds = PlayerPrefs.GetFloat("SavedTime", 0f);
-        UpdateText();
+        if (PlayerPrefs.HasKey("EndTime"))  // kolla om det finns en sparad sluttid
+        {
+            string savedTime = PlayerPrefs.GetString("EndTime");
+            endTime = DateTime.Parse(savedTime);
+
+            float remaining = (float)(endTime - DateTime.Now).TotalSeconds;
+
+            if (remaining > 0)
+            {
+                timeSeconds = remaining;
+                isRunning = true;
+            }
+            else
+            {
+                timeSeconds = 0;
+            }
+
+            UpdateText();
+        }
     }
 
-    void Update()
+    void Update()    //uppdatera timer varje frame
     {
         if (!isRunning) return;
 
-        if (timeSeconds > 0)
-        {
-            timeSeconds -= Time.deltaTime;
-            UpdateText();
-        }
-        else
+        timeSeconds -= Time.deltaTime;
+
+        if (timeSeconds <= 0)
         {
             timeSeconds = 0;
             isRunning = false;
-            UpdateText();
-            Debug.Log("Time finished!");
         }
+
+        UpdateText();
     }
 
-    public void Add10Minutes()
+    public void Add10Minutes()  
     {
-        timeSeconds += 600f;
-        SaveTime();
+        timeSeconds += 600;
         UpdateText();
     }
 
     public void Minus10Minutes()
     {
-        Debug.Log("Minus button pressed");
-
-        timeSeconds -= 600f;
+        timeSeconds -= 600;
 
         if (timeSeconds < 0)
             timeSeconds = 0;
@@ -52,28 +65,23 @@ public class Timer : MonoBehaviour
         UpdateText();
     }
 
-    public void StartTimer()
+    public void StartTimer()  // starta timer och spara sluttid
     {
         if (timeSeconds > 0)
+        {
+            endTime = DateTime.Now.AddSeconds(timeSeconds);
+            PlayerPrefs.SetString("EndTime", endTime.ToString());
+            PlayerPrefs.Save();
+
             isRunning = true;
+        }
     }
 
-    void UpdateText()
+    void UpdateText()     // formatera tiden som mm:ss
     {
         int minutes = Mathf.FloorToInt(timeSeconds / 60);
         int seconds = Mathf.FloorToInt(timeSeconds % 60);
 
         timeText.text = $"{minutes:00}:{seconds:00}";
-    }
-
-    void SaveTime()
-    {
-        PlayerPrefs.SetFloat("SavedTime", timeSeconds);
-        PlayerPrefs.Save();
-    }
-
-    void OnApplicationQuit()
-    {
-        SaveTime();
     }
 }
