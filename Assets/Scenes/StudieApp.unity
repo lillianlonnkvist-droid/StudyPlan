@@ -8120,7 +8120,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1846158179}
         m_TargetAssemblyTypeName: Timer, Assembly-CSharp
-        m_MethodName: Add10Minutes
+        m_MethodName: Minus10Minutes
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

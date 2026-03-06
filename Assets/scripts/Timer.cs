@@ -13,7 +13,7 @@ public class Timer : MonoBehaviour
 
     void Start()
     {
-        if (PlayerPrefs.HasKey("EndTime"))
+        if (PlayerPrefs.HasKey("EndTime"))  // kolla om det finns en sparad sluttid
         {
             string savedTime = PlayerPrefs.GetString("EndTime");
             endTime = DateTime.Parse(savedTime);
@@ -34,7 +34,7 @@ public class Timer : MonoBehaviour
         }
     }
 
-    void Update()
+    void Update()    //uppdatera timer varje frame
     {
         if (!isRunning) return;
 
@@ -49,7 +49,7 @@ public class Timer : MonoBehaviour
         UpdateText();
     }
 
-    public void Add10Minutes()
+    public void Add10Minutes()  
     {
         timeSeconds += 600;
         UpdateText();
@@ -65,7 +65,7 @@ public class Timer : MonoBehaviour
         UpdateText();
     }
 
-    public void StartTimer()
+    public void StartTimer()  // starta timer och spara sluttid
     {
         if (timeSeconds > 0)
         {
@@ -77,7 +77,7 @@ public class Timer : MonoBehaviour
         }
     }
 
-    void UpdateText()
+    void UpdateText()     // formatera tiden som mm:ss
     {
         int minutes = Mathf.FloorToInt(timeSeconds / 60);
         int seconds = Mathf.FloorToInt(timeSeconds % 60);

@@ -34,7 +34,7 @@ public class Tasklist : MonoBehaviour
         InputField.text = "";
         InputField.ActivateInputField();
     }
-         public void ClearTasks() //cleara listan
+         public void ClearTasks() //cleara listan       
     {
         TaskText.text = "";
         taskNumber = 0;
