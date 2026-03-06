@@ -19,7 +19,7 @@ public class ImportantDays : MonoBehaviour
 
         outputText.text += day + " - " + description + "\n";
 
-        PlayerPrefs.SetString("ImportantDays", outputText.text);
+        PlayerPrefs.SetString("Viktigadager", outputText.text);
         PlayerPrefs.Save();
         dayInput.text = "";
         descriptionInput.text = "";
@@ -27,6 +27,6 @@ public class ImportantDays : MonoBehaviour
     public void ClearDays()
     {
         outputText.text = "";
-        PlayerPrefs.DeleteKey("ImportantDays");
+        PlayerPrefs.DeleteKey("Viktigadager");
     }
 }
